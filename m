@@ -2,80 +2,75 @@ Return-Path: <netem-bounces@lists.linux-foundation.org>
 X-Original-To: lists.netem@lfdr.de
 Delivered-To: lists.netem@lfdr.de
 Received: from mail.linuxfoundation.org (mail.linuxfoundation.org [140.211.169.12])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C81B4A730
-	for <lists.netem@lfdr.de>; Tue, 18 Jun 2019 18:39:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 070BC4A732
+	for <lists.netem@lfdr.de>; Tue, 18 Jun 2019 18:40:03 +0200 (CEST)
 Received: from mail.linux-foundation.org (localhost [127.0.0.1])
-	by mail.linuxfoundation.org (Postfix) with ESMTP id 26057E21;
-	Tue, 18 Jun 2019 16:38:27 +0000 (UTC)
+	by mail.linuxfoundation.org (Postfix) with ESMTP id DBE2BE31;
+	Tue, 18 Jun 2019 16:38:29 +0000 (UTC)
 X-Original-To: netem@lists.linux-foundation.org
 Delivered-To: netem@mail.linuxfoundation.org
 Received: from smtp1.linuxfoundation.org (smtp1.linux-foundation.org
 	[172.17.192.35])
-	by mail.linuxfoundation.org (Postfix) with ESMTPS id 1FCC0E1F
+	by mail.linuxfoundation.org (Postfix) with ESMTPS id 648D0A95
 	for <netem@lists.linux-foundation.org>;
-	Mon, 17 Jun 2019 18:11:36 +0000 (UTC)
+	Mon, 17 Jun 2019 22:33:10 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
-	[209.85.222.193])
-	by smtp1.linuxfoundation.org (Postfix) with ESMTPS id 9DE5182F
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+	[209.85.215.193])
+	by smtp1.linuxfoundation.org (Postfix) with ESMTPS id 176E8180
 	for <netem@lists.linux-foundation.org>;
-	Mon, 17 Jun 2019 18:11:35 +0000 (UTC)
-Received: by mail-qk1-f193.google.com with SMTP id b18so6757386qkc.9
+	Mon, 17 Jun 2019 22:33:10 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id v11so6544437pgl.5
 	for <netem@lists.linux-foundation.org>;
-	Mon, 17 Jun 2019 11:11:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=netronome-com.20150623.gappssmtp.com; s=20150623;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=OaLXfJmWj2NzaEA4/IVizYTp/CawRSjDfR+pSrvSFqc=;
-	b=WiPNym2pnalxsSfCQsdpOWAmh0boiPDEuG92f+PO5jo4qV5BCRn7EP5f7K4Xvf9Usl
-	van4t4GAmf+cXE8PUeFcZiH1xVoa1dk6xibKhAb/aeFm4zNu/4x2HroRy58eN9w8eMDY
-	wBuW81yL40XbLnTSnaG2yqTNZLNi5qaWTBH0ptXtjQ32UgWezamtu6p8JgaIYUe26FkQ
-	w06t1ZRLwa20AEFZAiDZOiWcdFiY3jkCaIzF0+nlq2VNtu1Zs0XfsxRb/SVSDqLZbpRm
-	8NHbREv70g4UX4bKOdsnNu9/5VaO8qcQoUCvb6qJEriUp/diWdT55M8hwaHuP5gzd7tD
-	kw9w==
+	Mon, 17 Jun 2019 15:33:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=mvpMcAU4IlTvoMtZwQO9v3Uk8QuLJ2xmdxsld5jOLeM=;
+	b=vY7tQbidyQS64LOoqYLHv8TIJSaEzRM37+2PJMdZkDg8vANElZ3/ETy7WEEkOPnB9j
+	s0vdZ4YlCNDb/eeJTtjbQ3oPrAQmWoS0zPANeuaRAS+pgYDTk6CEuHq5hF9PMkGjwOan
+	G7bXH9gJPJXei8P4k9oatIpfdv+EIMlig+nNKjRrq3Z9dNmyYDmPI9SrJ5v9i/q3S9Gq
+	Ym2uG6ZroQ4B6NT5w0mstWu0nczPsre8lUq3Mvflt08O7WXJx+paMnQnEzp8zKiRvkLg
+	lY5f6COp0LY9i+Ba11flnwKGJd+1P65jvkDmGP+NyRRyvzXCM53Yum8c1uVRl8+htria
+	OP3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=OaLXfJmWj2NzaEA4/IVizYTp/CawRSjDfR+pSrvSFqc=;
-	b=HcvaDymT/5vXoJWZLdMo1IeFLW4735NPUMsOMqi+Tepme5Qu0n8G4T3Sgu7r736b4e
-	FPo8Bqn0WuTZb3QStuya19rkaZJxvMUvA3kob2RTyQS4Ip6mjuPXxD3j5WJ7YxCrz3CK
-	dmUlji8MkIIb4JNRCUrji3bkvpP3unBhodqdD0zdKWw9aLZ5x4NKCU+vvCtpSJS30E/G
-	PchakVjvgNzYCcmmeAMtcwIDwndBZXjLfAiW7uP8XugvNntklwsP/+afb4NAKgGsqLQS
-	lZb0VQ9p9AEBvKnyyOXZSV+N8icmj1qSiv3ozOquHD4XA+U6K2ySelzwtwmgXGUHkiWX
-	QCmg==
-X-Gm-Message-State: APjAAAV2B7OZQ/9Ycz2ik9L+zcQA4ZlQ9bnZUxVDSmkXITv5dgfcaPK1
-	1nFVXB+D9pbm7d15188TJ9B+GQ==
-X-Google-Smtp-Source: APXvYqygouishKvy3XoRT3bQPiVMNhIqoE1utlidgHJ/ffVvNkkq/JusdMDCvACQyTYkYQaEYoGYYQ==
-X-Received: by 2002:a05:620a:1661:: with SMTP id
-	d1mr15155320qko.192.1560795094534; 
-	Mon, 17 Jun 2019 11:11:34 -0700 (PDT)
-Received: from jkicinski-Precision-T1700.netronome.com ([66.60.152.14])
-	by smtp.gmail.com with ESMTPSA id
-	x10sm9048564qtc.34.2019.06.17.11.11.32
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 17 Jun 2019 11:11:33 -0700 (PDT)
-From: Jakub Kicinski <jakub.kicinski@netronome.com>
-To: davem@davemloft.net,
-	xiyou.wangcong@gmail.com
-Date: Mon, 17 Jun 2019 11:11:11 -0700
-Message-Id: <20190617181111.5025-3-jakub.kicinski@netronome.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190617181111.5025-1-jakub.kicinski@netronome.com>
-References: <20190617181111.5025-1-jakub.kicinski@netronome.com>
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=mvpMcAU4IlTvoMtZwQO9v3Uk8QuLJ2xmdxsld5jOLeM=;
+	b=eKe0qSWBfIvEW/VTzhXFkVdIv+FSFqzijkuAWMoHVMPwer2fSbj1XsUh3wsBbel9zr
+	o8orgqMRrz7waXxNPGxZl1AVl9Imn9y9TDGk/dvnzeo0HxBNNpWgrRGxWjWJV15MIDEE
+	nX9Yu/SNi32EVbKepbpn4l0NXu/tfoMiw4Rw3ZN7qRRbuj7vR+Eh4MXoMEWH1BNB8H3v
+	3+uKwnnI0Y+gRD5GtkN6PQmXjkT+3qAQMpF/Pvzer7UI+1x15a29oibCoXX9tZzkRscC
+	z+NrDfRaZuikb6+JBEgcj8j9tlOUeKmhnz/sII3bR6+oIwYBNH9lQq4ZzWhGbT7ftj0/
+	x72A==
+X-Gm-Message-State: APjAAAVQIAn5qYm8qjLOvxs9On4Ct6avtuZGD+xuS7daDvc0t+EX1VZk
+	a71ypH9N5jYLqpzFAAS+jipv1yRAXD4iV6Rf+yI=
+X-Google-Smtp-Source: APXvYqyCwsCVzJQiR2StbMKKVURUyI8mkPWMLl/znggAFIB+GpuL4iRrhh7JKNCCvfkFMoJPr7F7gz3KDWPs0K2c1Ow=
+X-Received: by 2002:a17:90a:1d8:: with SMTP id 24mr1530663pjd.70.1560810789632;
+	Mon, 17 Jun 2019 15:33:09 -0700 (PDT)
 MIME-Version: 1.0
-X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,RCVD_IN_DNSWL_NONE autolearn=ham version=3.3.1
+References: <20190617181111.5025-1-jakub.kicinski@netronome.com>
+	<20190617181111.5025-2-jakub.kicinski@netronome.com>
+In-Reply-To: <20190617181111.5025-2-jakub.kicinski@netronome.com>
+From: Cong Wang <xiyou.wangcong@gmail.com>
+Date: Mon, 17 Jun 2019 15:32:57 -0700
+Message-ID: <CAM_iQpWa=mTo6JCffh5dX5Y=8Nq+xBMhG0AqDx+9KrfGXz8wZg@mail.gmail.com>
+To: Jakub Kicinski <jakub.kicinski@netronome.com>
+X-Spam-Status: No, score=-2.0 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID, DKIM_VALID_AU, FREEMAIL_FROM,
+	RCVD_IN_DNSWL_NONE autolearn=ham version=3.3.1
 X-Spam-Checker-Version: SpamAssassin 3.3.1 (2010-03-16) on
 	smtp1.linux-foundation.org
 X-Mailman-Approved-At: Tue, 18 Jun 2019 16:38:03 +0000
-Cc: jiri@resnulli.us, nhorman@tuxdriver.com, oss-drivers@netronome.com,
-	netdev@vger.kernel.org, netem@lists.linux-foundation.org,
-	jhs@mojatatu.com, stephen@networkplumber.org,
-	edumazet@google.com, posk@google.com
-Subject: [Netem] [PATCH net v2 2/2] net: netem: fix use after free and
-	double free with packet corruption
+Cc: Jiri Pirko <jiri@resnulli.us>, Neil Horman <nhorman@tuxdriver.com>,
+	oss-drivers@netronome.com,
+	Linux Kernel Network Developers <netdev@vger.kernel.org>,
+	netem@lists.linux-foundation.org, Jamal Hadi Salim <jhs@mojatatu.com>,
+	Stephen Hemminger <stephen@networkplumber.org>,
+	Eric Dumazet <edumazet@google.com>, posk@google.com,
+	David Miller <davem@davemloft.net>
+Subject: Re: [Netem] [PATCH net v2 1/2] net: netem: fix backlog accounting
+ for corrupted GSO frames
 X-BeenThere: netem@lists.linux-foundation.org
 X-Mailman-Version: 2.1.12
 Precedence: list
@@ -92,122 +87,33 @@ Content-Transfer-Encoding: 7bit
 Sender: netem-bounces@lists.linux-foundation.org
 Errors-To: netem-bounces@lists.linux-foundation.org
 
-Brendan reports that the use of netem's packet corruption capability
-leads to strange crashes.  This seems to be caused by
-commit d66280b12bd7 ("net: netem: use a list in addition to rbtree")
-which uses skb->next pointer to construct a fast-path queue of
-in-order skbs.
+On Mon, Jun 17, 2019 at 11:11 AM Jakub Kicinski
+<jakub.kicinski@netronome.com> wrote:
+>
+> When GSO frame has to be corrupted netem uses skb_gso_segment()
+> to produce the list of frames, and re-enqueues the segments one
+> by one.  The backlog length has to be adjusted to account for
+> new frames.
+>
+> The current calculation is incorrect, leading to wrong backlog
+> lengths in the parent qdisc (both bytes and packets), and
+> incorrect packet backlog count in netem itself.
+>
+> Parent backlog goes negative, netem's packet backlog counts
+> all non-first segments twice (thus remaining non-zero even
+> after qdisc is emptied).
+>
+> Move the variables used to count the adjustment into local
+> scope to make 100% sure they aren't used at any stage in
+> backports.
+>
+> Fixes: 6071bd1aa13e ("netem: Segment GSO packets on enqueue")
+> Signed-off-by: Jakub Kicinski <jakub.kicinski@netronome.com>
+> Reviewed-by: Dirk van der Merwe <dirk.vandermerwe@netronome.com>
 
-Packet corruption code has to invoke skb_gso_segment() in case
-of skbs in need of GSO.  skb_gso_segment() returns a list of
-skbs.  If next pointers of the skbs on that list do not get cleared
-fast path list may point to freed skbs or skbs which are also on
-the RB tree.
+Looks good!
 
-Let's say skb gets segmented into 3 frames:
-
-A -> B -> C
-
-A gets hooked to the t_head t_tail list by tfifo_enqueue(), but it's
-next pointer didn't get cleared so we have:
-
-h t
-|/
-A -> B -> C
-
-Now if B and C get also get enqueued successfully all is fine, because
-tfifo_enqueue() will overwrite the list in order.  IOW:
-
-Enqueue B:
-
-h    t
-|    |
-A -> B    C
-
-Enqueue C:
-
-h         t
-|         |
-A -> B -> C
-
-But if B and C get reordered we may end up with:
-
-h t            RB tree
-|/                |
-A -> B -> C       B
-                   \
-                    C
-
-Or if they get dropped just:
-
-h t
-|/
-A -> B -> C
-
-where A and B are already freed.
-
-To reproduce either limit has to be set low to cause freeing of
-segs or reorders have to happen (due to delay jitter).
-
-Note that we only have to mark the first segment as not on the
-list, "finish_segs" handling of other frags already does that.
-
-Another caveat is that qdisc_drop_all() still has to free all
-segments correctly in case of drop of first segment, therefore
-we re-link segs before calling it.
-
-v2:
- - re-link before drop, v1 was leaking non-first segs if limit
-   was hit at the first seg
- - better commit message which lead to discovering the above :)
-
-Reported-by: Brendan Galloway <brendan.galloway@netronome.com>
-Fixes: d66280b12bd7 ("net: netem: use a list in addition to rbtree")
-Signed-off-by: Jakub Kicinski <jakub.kicinski@netronome.com>
-Reviewed-by: Dirk van der Merwe <dirk.vandermerwe@netronome.com>
----
- net/sched/sch_netem.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
-
-diff --git a/net/sched/sch_netem.c b/net/sched/sch_netem.c
-index 3b3e2d772c3b..b17f2ed970e2 100644
---- a/net/sched/sch_netem.c
-+++ b/net/sched/sch_netem.c
-@@ -493,17 +493,14 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
- 	 */
- 	if (q->corrupt && q->corrupt >= get_crandom(&q->corrupt_cor)) {
- 		if (skb_is_gso(skb)) {
--			segs = netem_segment(skb, sch, to_free);
--			if (!segs)
-+			skb = netem_segment(skb, sch, to_free);
-+			if (!skb)
- 				return rc_drop;
--			qdisc_skb_cb(segs)->pkt_len = segs->len;
--		} else {
--			segs = skb;
-+			segs = skb->next;
-+			skb_mark_not_on_list(skb);
-+			qdisc_skb_cb(skb)->pkt_len = skb->len;
- 		}
- 
--		skb = segs;
--		segs = segs->next;
--
- 		skb = skb_unshare(skb, GFP_ATOMIC);
- 		if (unlikely(!skb)) {
- 			qdisc_qstats_drop(sch);
-@@ -520,6 +517,8 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
- 	}
- 
- 	if (unlikely(sch->q.qlen >= sch->limit)) {
-+		/* re-link segs, so that qdisc_drop_all() frees them all */
-+		skb->next = segs;
- 		qdisc_drop_all(skb, sch, to_free);
- 		return rc_drop;
- 	}
--- 
-2.21.0
-
+Acked-by: Cong Wang <xiyou.wangcong@gmail.com>
 _______________________________________________
 Netem mailing list
 Netem@lists.linux-foundation.org
