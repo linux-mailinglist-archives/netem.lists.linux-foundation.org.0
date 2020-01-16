@@ -2,56 +2,56 @@ Return-Path: <netem-bounces@lists.linux-foundation.org>
 X-Original-To: lists.netem@lfdr.de
 Delivered-To: lists.netem@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A7CF145F19
-	for <lists.netem@lfdr.de>; Thu, 23 Jan 2020 00:23:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9891A145F1A
+	for <lists.netem@lfdr.de>; Thu, 23 Jan 2020 00:23:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 03FBB863F2;
-	Wed, 22 Jan 2020 23:23:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 41AC586AB2;
+	Wed, 22 Jan 2020 23:23:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zlPXOBs3GJul; Wed, 22 Jan 2020 23:23:48 +0000 (UTC)
+	with ESMTP id BrGVWHtvDsOG; Wed, 22 Jan 2020 23:23:56 +0000 (UTC)
 Received: from lists.linuxfoundation.org (lf-lists.osuosl.org [140.211.9.56])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D20A6869AB;
-	Wed, 22 Jan 2020 23:23:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D90886ADF;
+	Wed, 22 Jan 2020 23:23:23 +0000 (UTC)
 Received: from lf-lists.osuosl.org (localhost [127.0.0.1])
-	by lists.linuxfoundation.org (Postfix) with ESMTP id B8A80C0174;
-	Wed, 22 Jan 2020 23:23:20 +0000 (UTC)
+	by lists.linuxfoundation.org (Postfix) with ESMTP id 61ACFC0176;
+	Wed, 22 Jan 2020 23:23:23 +0000 (UTC)
 X-Original-To: netem@lists.linux-foundation.org
 Delivered-To: netem@lists.linuxfoundation.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists.linuxfoundation.org (Postfix) with ESMTP id 831BBC077D
- for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:30:17 +0000 (UTC)
+ by lists.linuxfoundation.org (Postfix) with ESMTP id 989D1C077D
+ for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:30:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7E71586B0B
- for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:30:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 84A2C86B0B
+ for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:30:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LarNjb88jD0B for <netem@lists.linux-foundation.org>;
- Thu, 16 Jan 2020 17:30:13 +0000 (UTC)
+ with ESMTP id oEPyfSzrHRJA for <netem@lists.linux-foundation.org>;
+ Thu, 16 Jan 2020 17:30:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4E34486959
- for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:30:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D8F5986A0C
+ for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:30:14 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F30D224714;
- Thu, 16 Jan 2020 17:30:11 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8D4BC24734;
+ Thu, 16 Jan 2020 17:30:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579195813;
- bh=y4H8w1sQ1rzdjJIcSge6scSlXF12nl0/DecHmZsq0b8=;
+ s=default; t=1579195814;
+ bh=X/lr2loGzOXrhQ1zAVOept7gtbPCYsrVXmgybcoBkpE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jB9R5GfxHI+GGjRlrZNGLPwXWIraY1WkjW2rPaXlHgzP4c7vdtqlyfjDggNc3/bpL
- vwk+6yLF+tywjbtXhPhST6r9CqtarnkAz9QD8ous17V5G2j3ZMQaplHJoucSWksJmp
- Mun3we2ude402T/EqFTFU9tiTGvf4SxV6kTlFLzc=
+ b=sO3T8mD2cnkv3cxnKC7RTZO/X6LPceH+XsjcDDb6B8uJVz/ow9osIdNLIgc4CpqHs
+ +L+DjzQ6D/A+4QgwmUriyGv1CJBJp8opbOWdGKaauUuOV5iABJjml3tA1scQY+mQx1
+ L/Lb3GdT/x2XmK5iv2esAPipeeLltHdBMxCCvCA8=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Thu, 16 Jan 2020 12:23:16 -0500
-Message-Id: <20200116172403.18149-267-sashal@kernel.org>
+Date: Thu, 16 Jan 2020 12:23:17 -0500
+Message-Id: <20200116172403.18149-268-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200116172403.18149-1-sashal@kernel.org>
 References: <20200116172403.18149-1-sashal@kernel.org>
@@ -61,12 +61,10 @@ X-Patchwork-Hint: Ignore
 X-Mailman-Approved-At: Wed, 22 Jan 2020 23:23:06 +0000
 Cc: Sasha Levin <sashal@kernel.org>,
  Jakub Kicinski <jakub.kicinski@netronome.com>,
- kbuild test robot <lkp@intel.com>, Simon Horman <simon.horman@netronome.com>,
- netem@lists.linux-foundation.org, netdev@vger.kernel.org,
- Ben Hutchings <ben@decadent.org.uk>, "David S . Miller" <davem@davemloft.net>,
- Dan Carpenter <dan.carpenter@oracle.com>
-Subject: [Netem] [PATCH AUTOSEL 4.14 324/371] net: netem: fix error path for
-	corrupted GSO frames
+ Simon Horman <simon.horman@netronome.com>, netem@lists.linux-foundation.org,
+ netdev@vger.kernel.org, "David S . Miller" <davem@davemloft.net>
+Subject: [Netem] [PATCH AUTOSEL 4.14 325/371] net: netem: correct the
+	parent's backlog when corrupted packet was dropped
 X-BeenThere: netem@lists.linux-foundation.org
 X-Mailman-Version: 2.1.15
 Precedence: list
@@ -85,67 +83,32 @@ Sender: "Netem" <netem-bounces@lists.linux-foundation.org>
 
 From: Jakub Kicinski <jakub.kicinski@netronome.com>
 
-[ Upstream commit a7fa12d15855904aff1716e1fc723c03ba38c5cc ]
+[ Upstream commit e0ad032e144731a5928f2d75e91c2064ba1a764c ]
 
-To corrupt a GSO frame we first perform segmentation.  We then
-proceed using the first segment instead of the full GSO skb and
-requeue the rest of the segments as separate packets.
+If packet corruption failed we jump to finish_segs and return
+NET_XMIT_SUCCESS. Seeing success will make the parent qdisc
+increment its backlog, that's incorrect - we need to return
+NET_XMIT_DROP.
 
-If there are any issues with processing the first segment we
-still want to process the rest, therefore we jump to the
-finish_segs label.
-
-Commit 177b8007463c ("net: netem: fix backlog accounting for
-corrupted GSO frames") started using the pointer to the first
-segment in the "rest of segments processing", but as mentioned
-above the first segment may had already been freed at this point.
-
-Backlog corrections for parent qdiscs have to be adjusted.
-
-Fixes: 177b8007463c ("net: netem: fix backlog accounting for corrupted GSO frames")
-Reported-by: kbuild test robot <lkp@intel.com>
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-Reported-by: Ben Hutchings <ben@decadent.org.uk>
+Fixes: 6071bd1aa13e ("netem: Segment GSO packets on enqueue")
 Signed-off-by: Jakub Kicinski <jakub.kicinski@netronome.com>
 Reviewed-by: Simon Horman <simon.horman@netronome.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- net/sched/sch_netem.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ net/sched/sch_netem.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/net/sched/sch_netem.c b/net/sched/sch_netem.c
-index ede0a24e67eb..64c3cfa35736 100644
+index 64c3cfa35736..328b043edf07 100644
 --- a/net/sched/sch_netem.c
 +++ b/net/sched/sch_netem.c
-@@ -504,6 +504,7 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
- 		if (skb->ip_summed == CHECKSUM_PARTIAL &&
- 		    skb_checksum_help(skb)) {
- 			qdisc_drop(skb, sch, to_free);
-+			skb = NULL;
- 			goto finish_segs;
+@@ -603,6 +603,8 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
  		}
- 
-@@ -580,9 +581,10 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
- finish_segs:
- 	if (segs) {
- 		unsigned int len, last_len;
--		int nb = 0;
-+		int nb;
- 
--		len = skb->len;
-+		len = skb ? skb->len : 0;
-+		nb = skb ? 1 : 0;
- 
- 		while (segs) {
- 			skb2 = segs->next;
-@@ -599,7 +601,8 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
- 			}
- 			segs = skb2;
- 		}
--		qdisc_tree_reduce_backlog(sch, -nb, prev_len - len);
-+		/* Parent qdiscs accounted for 1 skb of size @prev_len */
-+		qdisc_tree_reduce_backlog(sch, -(nb - 1), -(len - prev_len));
+ 		/* Parent qdiscs accounted for 1 skb of size @prev_len */
+ 		qdisc_tree_reduce_backlog(sch, -(nb - 1), -(len - prev_len));
++	} else if (!skb) {
++		return NET_XMIT_DROP;
  	}
  	return NET_XMIT_SUCCESS;
  }
