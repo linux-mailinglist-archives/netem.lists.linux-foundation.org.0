@@ -1,73 +1,71 @@
 Return-Path: <netem-bounces@lists.linux-foundation.org>
 X-Original-To: lists.netem@lfdr.de
 Delivered-To: lists.netem@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BB3A107629
-	for <lists.netem@lfdr.de>; Fri, 22 Nov 2019 18:03:20 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE5EB145F15
+	for <lists.netem@lfdr.de>; Thu, 23 Jan 2020 00:23:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C6928744B;
-	Fri, 22 Nov 2019 17:03:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4B07287F34;
+	Wed, 22 Jan 2020 23:23:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IFagvOhHVLTf; Fri, 22 Nov 2019 17:03:18 +0000 (UTC)
+	with ESMTP id bMqAUtGU5ViX; Wed, 22 Jan 2020 23:23:11 +0000 (UTC)
 Received: from lists.linuxfoundation.org (lf-lists.osuosl.org [140.211.9.56])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 89C9987496;
-	Fri, 22 Nov 2019 17:03:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 50A1587E5F;
+	Wed, 22 Jan 2020 23:23:10 +0000 (UTC)
 Received: from lf-lists.osuosl.org (localhost [127.0.0.1])
-	by lists.linuxfoundation.org (Postfix) with ESMTP id 7674BC1D74;
-	Fri, 22 Nov 2019 17:03:18 +0000 (UTC)
+	by lists.linuxfoundation.org (Postfix) with ESMTP id 18CE4C0174;
+	Wed, 22 Jan 2020 23:23:10 +0000 (UTC)
 X-Original-To: netem@lists.linux-foundation.org
 Delivered-To: netem@lists.linuxfoundation.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists.linuxfoundation.org (Postfix) with ESMTP id F1FFCC18DA
- for <netem@lists.linux-foundation.org>; Thu, 21 Nov 2019 06:17:08 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists.linuxfoundation.org (Postfix) with ESMTP id 29536C077D
+ for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:08:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E116B87D6E
- for <netem@lists.linux-foundation.org>; Thu, 21 Nov 2019 06:17:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 17FC58612B
+ for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:08:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XqpJ0T8HPeqk for <netem@lists.linux-foundation.org>;
- Thu, 21 Nov 2019 06:17:08 +0000 (UTC)
+ with ESMTP id HDoy9DAsxyiB for <netem@lists.linux-foundation.org>;
+ Thu, 16 Jan 2020 17:08:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vs1-f45.google.com (mail-vs1-f45.google.com
- [209.85.217.45])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1FB9387D5A
- for <netem@lists.linux-foundation.org>; Thu, 21 Nov 2019 06:17:08 +0000 (UTC)
-Received: by mail-vs1-f45.google.com with SMTP id a143so1477454vsd.9
- for <netem@lists.linux-foundation.org>; Wed, 20 Nov 2019 22:17:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=YiBi49FvjP3nSJ+tq7cRjTjCswJnlDqL6fkW9+Rrb88=;
- b=ohtHRuoNBdLdMzsOhMGtyG77JE0pnFT+eBFKHOsJv8/nmY37YdSJqb3UeBLbMrGaMZ
- WrCXcxm//el8wALcUTtCgrx1SENwkwhjvUr16zYHhdgzj5/kCtIv/o0pdjDC1iTbEyFd
- xv2ENnjseS6F/8Icie0N3mxttHPwcz7Mfen2Kik9oLhVqUM9Ap9WYY+UhXtb+xV4Oy5+
- Td9HBz59LJW3iGcBsiI0jzQtn9/8c0EmlQgQwnBCeqxIMnkZA1hy01pBtDR5qa5dmDAF
- YyFofRiZ4NBHJ5Tl+e/ItzCOjbTZAJDLZhVStSZfT+otUueMPDswonhTsEqZrn5DuQpi
- ZlAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=YiBi49FvjP3nSJ+tq7cRjTjCswJnlDqL6fkW9+Rrb88=;
- b=oc6xxcHrxSzBagGVdDoUq8SpxAj/Xqup60qWB1agnwgjF8+qpdIHIS5I+nOgWhSGz8
- uANFYywflW++/BBmfUttzmACwHBCaARf3tQ/4tkKAuFMYDeklvNYIUKL60cA2Fu7e7GM
- c1/qHgR3Oh0FbIsry0Kyhl/pOHFwIscpFuTMbuAHXy45XjEUxVS9f5uNvsdcf1i6RZA5
- QZrXefBBv/GGVLSQwRfKsayrkxwJjynVDmnw+UjwMSLvFyT+ROP9YnI5UZzIdz7d7POc
- x4PFRV3MHJd91zJr16N5daU2A+f8tj795UtU3wwjdpBfVzyd7jAvutQm36iEpzx+iP2A
- i13w==
-X-Gm-Message-State: APjAAAVkwWEEKadt8ifp52D0KkFFB/8GInAkE+ywGRV3xxsx24EVYfAz
- d1tAz0OcaRk6P/GvK3Ag4intEVGSQzLeVmYrgvpYAg==
-X-Google-Smtp-Source: APXvYqxwoUWv7NJUGNjIIV6wqg0EZwJ5ht3cKERVU3PAvPNisWn2Ocp364Gm407XJca8zJK8faafq9xh5ZqUiZCYDtc=
-X-Received: by 2002:a67:c88f:: with SMTP id v15mr4858688vsk.172.1574317026867; 
- Wed, 20 Nov 2019 22:17:06 -0800 (PST)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8705F86388
+ for <netem@lists.linux-foundation.org>; Thu, 16 Jan 2020 17:08:52 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6187224679;
+ Thu, 16 Jan 2020 17:08:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1579194532;
+ bh=NgkfrwC0DyssXCbp8oWV3NAEiuEx3mhWhQdfEZBAqJ4=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=0iJsqs1E5zxUZcZ+BAzP4TWqmZ71cRvcDaqcY1HEu7/plYiKNb9rjUoNYENxVmUBY
+ cdUA0yMGowPPyroNJNpDCYR1C+ndK3+GtPDYpaJs06Ad7ov8p/VfZurrpHhO/HYapF
+ o1ITvgj6/xtf9/NXJ/ZU0FvddzPYeqnSC3k2+l9k=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Date: Thu, 16 Jan 2020 12:00:58 -0500
+Message-Id: <20200116170509.12787-157-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200116170509.12787-1-sashal@kernel.org>
+References: <20200116170509.12787-1-sashal@kernel.org>
 MIME-Version: 1.0
-From: Dejene Boru <dejene.boru@gmail.com>
-Date: Thu, 21 Nov 2019 07:16:55 +0100
-Message-ID: <CAG40BELox3-4LRfU7jcfxT7FcXM9bBaW2PvVJ0YLiWHSBU+0GA@mail.gmail.com>
-To: netem@lists.linux-foundation.org
-X-Mailman-Approved-At: Fri, 22 Nov 2019 17:03:14 +0000
-Subject: [Netem] Emulating delay with jitter but without reordering
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-Mailman-Approved-At: Wed, 22 Jan 2020 23:23:06 +0000
+Cc: Sasha Levin <sashal@kernel.org>,
+ Jakub Kicinski <jakub.kicinski@netronome.com>, netdev@vger.kernel.org,
+ netem@lists.linux-foundation.org,
+ Dirk van der Merwe <dirk.vandermerwe@netronome.com>,
+ Cong Wang <xiyou.wangcong@gmail.com>, "David S . Miller" <davem@davemloft.net>
+Subject: [Netem] [PATCH AUTOSEL 4.19 420/671] net: netem: fix backlog
+	accounting for corrupted GSO frames
 X-BeenThere: netem@lists.linux-foundation.org
 X-Mailman-Version: 2.1.15
 Precedence: list
@@ -79,61 +77,91 @@ List-Post: <mailto:netem@lists.linux-foundation.org>
 List-Help: <mailto:netem-request@lists.linux-foundation.org?subject=help>
 List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/netem>,
  <mailto:netem-request@lists.linux-foundation.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5704082078747095398=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: netem-bounces@lists.linux-foundation.org
 Sender: "Netem" <netem-bounces@lists.linux-foundation.org>
 
---===============5704082078747095398==
-Content-Type: multipart/alternative; boundary="0000000000002685f30597d53f7b"
+From: Jakub Kicinski <jakub.kicinski@netronome.com>
 
---0000000000002685f30597d53f7b
-Content-Type: text/plain; charset="UTF-8"
+[ Upstream commit 177b8007463c4f36c9a2c7ce7aa9875a4cad9bd5 ]
 
-Hi all,
+When GSO frame has to be corrupted netem uses skb_gso_segment()
+to produce the list of frames, and re-enqueues the segments one
+by one.  The backlog length has to be adjusted to account for
+new frames.
 
-I want to emulate a delay with some delay variation using Netem. However
-even a small jitter like 1ms causes packet reordering.
+The current calculation is incorrect, leading to wrong backlog
+lengths in the parent qdisc (both bytes and packets), and
+incorrect packet backlog count in netem itself.
 
-I have replaced the tfifo internal queue of Netem with pfifo based on the
-following suggestions, but it can't prevent reordering.
+Parent backlog goes negative, netem's packet backlog counts
+all non-first segments twice (thus remaining non-zero even
+after qdisc is emptied).
 
-https://wiki.linuxfoundation.org/networking/netem#contact_info
+Move the variables used to count the adjustment into local
+scope to make 100% sure they aren't used at any stage in
+backports.
 
-I would really appreciate if some knows a workaround for this.
+Fixes: 6071bd1aa13e ("netem: Segment GSO packets on enqueue")
+Signed-off-by: Jakub Kicinski <jakub.kicinski@netronome.com>
+Reviewed-by: Dirk van der Merwe <dirk.vandermerwe@netronome.com>
+Acked-by: Cong Wang <xiyou.wangcong@gmail.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ net/sched/sch_netem.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-Regards
-/Dejene
-
---0000000000002685f30597d53f7b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><span style=3D"font-family:roboto,&quot;helvetica neue&qu=
-ot;,helvetica,arial,sans-serif;font-size:12.8px">Hi all,</span><div dir=3D"=
-auto" style=3D"font-family:roboto,&quot;helvetica neue&quot;,helvetica,aria=
-l,sans-serif;font-size:12.8px"><br><div dir=3D"auto">I want to emulate a de=
-lay with some delay variation using Netem. However even a small jitter like=
- 1ms causes packet reordering.</div><div dir=3D"auto"><br><div dir=3D"auto"=
->I have replaced the tfifo internal queue of Netem with pfifo based on the =
-following suggestions, but it can&#39;t prevent reordering.</div><div dir=
-=3D"auto"><br></div><div dir=3D"auto"><a href=3D"https://wiki.linuxfoundati=
-on.org/networking/netem#contact_info" style=3D"text-decoration-line:none;co=
-lor:rgb(66,133,244)">https://wiki.linuxfoundation.org/networking/netem#cont=
-act_info</a><br></div><div dir=3D"auto"><br></div><div dir=3D"auto">I would=
- really appreciate if some knows a workaround for this.</div><div dir=3D"au=
-to"><br></div><div dir=3D"auto">Regards=C2=A0</div><div dir=3D"auto">/Dejen=
-e</div></div></div></div>
-
---0000000000002685f30597d53f7b--
-
---===============5704082078747095398==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/net/sched/sch_netem.c b/net/sched/sch_netem.c
+index 15f8f24c190d..1cd7266140e6 100644
+--- a/net/sched/sch_netem.c
++++ b/net/sched/sch_netem.c
+@@ -436,8 +436,7 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
+ 	struct netem_skb_cb *cb;
+ 	struct sk_buff *skb2;
+ 	struct sk_buff *segs = NULL;
+-	unsigned int len = 0, last_len, prev_len = qdisc_pkt_len(skb);
+-	int nb = 0;
++	unsigned int prev_len = qdisc_pkt_len(skb);
+ 	int count = 1;
+ 	int rc = NET_XMIT_SUCCESS;
+ 	int rc_drop = NET_XMIT_DROP;
+@@ -494,6 +493,7 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
+ 			segs = netem_segment(skb, sch, to_free);
+ 			if (!segs)
+ 				return rc_drop;
++			qdisc_skb_cb(segs)->pkt_len = segs->len;
+ 		} else {
+ 			segs = skb;
+ 		}
+@@ -583,6 +583,11 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
+ 
+ finish_segs:
+ 	if (segs) {
++		unsigned int len, last_len;
++		int nb = 0;
++
++		len = skb->len;
++
+ 		while (segs) {
+ 			skb2 = segs->next;
+ 			segs->next = NULL;
+@@ -598,9 +603,7 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch,
+ 			}
+ 			segs = skb2;
+ 		}
+-		sch->q.qlen += nb;
+-		if (nb > 1)
+-			qdisc_tree_reduce_backlog(sch, 1 - nb, prev_len - len);
++		qdisc_tree_reduce_backlog(sch, -nb, prev_len - len);
+ 	}
+ 	return NET_XMIT_SUCCESS;
+ }
+-- 
+2.20.1
 
 _______________________________________________
 Netem mailing list
 Netem@lists.linux-foundation.org
 https://lists.linuxfoundation.org/mailman/listinfo/netem
---===============5704082078747095398==--
